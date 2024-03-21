@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Page1 from './Components/page1'
+import Page2 from './Components/page2';
 
 function App() {
+  const [submissions, setSubmissions] = useState([]);
+
+  const handleSubmission = (codeSnippet) => {
+    setSubmissions([...submissions, codeSnippet]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Page1 onSubmit={handleSubmission} />
+      <Page2 submissions={submissions} />
     </div>
   );
 }
